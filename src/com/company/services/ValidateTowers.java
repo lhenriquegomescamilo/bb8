@@ -26,8 +26,7 @@ public class ValidateTowers {
 
     private boolean pillarsIsCorrectByTower(Tower tower) {
         return tower.getElementsForTower().stream()
-                .mapToInt(Integer::intValue)
-                .boxed()
+                .mapToInt(Integer::intValue).boxed()
                 .sorted(Collections.reverseOrder())
                 .collect(Collectors.toList())
                 .equals(tower.getElementsForTower());
