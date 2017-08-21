@@ -1,34 +1,37 @@
 package com.company.models;
 
-import java.util.List;
+import javax.swing.text.html.Option;
+import java.util.*;
 
 public class Tower {
 
     private String name;
-    private List<String> elementsForTower;
+    private List<Integer> elementsForTower;
 
     public Tower() {
+        this.name = "";
+        this.elementsForTower = new LinkedList<>();
     }
 
-    public Tower(String name, List<String> elementsForTower) {
+    public Tower(String name, List<Integer> elementsForTower) {
         this.name = name;
-        this.elementsForTower = elementsForTower;
+        this.elementsForTower = Optional.of(elementsForTower).orElse(new LinkedList<Integer>());
     }
 
     public String getName() {
         return name;
     }
 
-    public Tower setName(String name) {
+    public Tower withName(String name) {
         this.name = name;
         return this;
     }
 
-    public List<String> getElementsForTower() {
+    public List<Integer> getElementsForTower() {
         return elementsForTower;
     }
 
-    public void setElementsForTower(List<String> elementsForTower) {
+    public void setElementsForTower(List<Integer> elementsForTower) {
         this.elementsForTower = elementsForTower;
     }
 
@@ -39,15 +42,12 @@ public class Tower {
 
         Tower tower = (Tower) o;
 
-        if (name != null ? !name.equals(tower.name) : tower.name != null) return false;
-        return elementsForTower != null ? elementsForTower.equals(tower.elementsForTower) : tower.elementsForTower == null;
+        return name.equals(tower.name);
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (elementsForTower != null ? elementsForTower.hashCode() : 0);
-        return result;
+        return name.hashCode();
     }
 
     @Override

@@ -1,16 +1,11 @@
 package com.company;
 
 import com.company.models.Tower;
-import com.company.services.HandlerTower;
+import com.company.services.ExtractValueToTowers;
+import com.company.services.ValidateTowers;
 
-import java.io.IOException;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
-
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Scanner;
 
 public class Main {
 
@@ -27,9 +22,11 @@ public class Main {
      * 2.4. Um disco deve ser movido de cada vez;
      */
     public static void main(String[] args) {
-
         String fileName = "/Users/luiscamilo/dev/github/bb8/files/tower.txt";
-        new HandlerTower().readFileByPath(fileName);;
+        List<Tower> towers = new ExtractValueToTowers().build(fileName);
+        new ValidateTowers(towers);
+
     }
 
 }
+
