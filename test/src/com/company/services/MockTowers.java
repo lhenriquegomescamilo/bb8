@@ -15,7 +15,7 @@ public class MockTowers {
         List<Integer> list = IntStream.range(1,5)
                 .boxed().sorted(Collections.reverseOrder())
                 .collect(Collectors.toList());
-        System.out.println(list);
+
         return Arrays.asList(
                 new Tower("A", list),
                 new Tower("B", new LinkedList<>()),

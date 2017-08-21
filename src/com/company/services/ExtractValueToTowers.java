@@ -42,7 +42,6 @@ public class ExtractValueToTowers {
                 .stream()
                 .filter(numberAsString -> !numberAsString.isEmpty())
                 .map(Integer::parseInt)
-                .peek(System.out::println)
                 .collect(Collectors.toList());
     }
 

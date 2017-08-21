@@ -7,6 +7,7 @@ import com.company.services.ValidateTowers;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class Main {
 
     /**
@@ -22,9 +23,17 @@ public class Main {
      * 2.4. Um disco deve ser movido de cada vez;
      */
     public static void main(String[] args) {
-        String fileName = "/Users/luiscamilo/dev/github/bb8/files/tower.txt";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Informe o caminho absoluto do arquivo");
+        String fileName = scanner.nextLine();
+        scanner.close();
+
         List<Tower> towers = new ExtractValueToTowers().build(fileName);
-        new ValidateTowers(towers);
+        ValidateTowers validateTower = new ValidateTowers(towers);
+        validateTower.solve();
+
+        System.out.println("\nPassos para ordernar as torres");
+        System.out.println(validateTower.steps());
 
     }
 
